@@ -1,0 +1,205 @@
+---
+// src/components/Footer.astro
+const currentYear = new Date().getFullYear();
+
+const navigation = {
+  solutions: [
+    { name: "Web Development", href: "#" },
+    { name: "UI/UX Design", href: "#" },
+    { name: "E-Commerce", href: "#" },
+    { name: "SEO & Performance", href: "#" },
+  ],
+  company: [
+    { name: "About Us", href: "#" },
+    { name: "Our Work", href: "#" },
+    { name: "Careers", href: "#" },
+    { name: "Contact", href: "#" },
+  ],
+  legal: [
+    { name: "Privacy Policy", href: "#" },
+    { name: "Terms of Service", href: "#" },
+    { name: "Cookie Settings", href: "#" },
+  ],
+  socials: [
+    { name: "GitHub", href: "#", icon: "github" },
+    { name: "Twitter/X", href: "#", icon: "twitter" },
+    { name: "LinkedIn", href: "#", icon: "linkedin" },
+    { name: "Instagram", href: "#", icon: "instagram" },
+  ],
+};
+---
+
+<footer class="bg-zinc-950 text-zinc-400 font-sans border-t border-zinc-800/80">
+  <!-- Top Section: CTA / Newsletter -->
+  <div class="max-w-7xl mx-auto px-6 pt-16 pb-12">
+    <div
+      class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-zinc-800/60"
+    >
+      <!-- Brand & Pitch -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="flex items-center gap-3">
+          <div
+            class="h-8 w-8 bg-white text-zinc-950 font-black flex items-center justify-center text-xl tracking-tighter"
+          >
+            ▲
+          </div>
+          <span class="text-2xl font-extrabold text-white tracking-tight"
+            >BRAND</span
+          >
+        </div>
+        <p class="text-base text-zinc-400 max-w-sm leading-relaxed">
+          Crafting exceptional digital experiences with cutting-edge web
+          architecture and pixel-perfect precision.
+        </p>
+
+        <!-- Live Status Indicator -->
+        <div
+          class="inline-flex items-center gap-2.5 px-3 py-1.5 bg-zinc-900 border border-zinc-800 text-xs text-zinc-300"
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"
+            ></span>
+          </span>
+          All systems operational
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+        <div>
+          <h3
+            class="text-xs font-bold uppercase tracking-wider text-zinc-200 mb-4"
+          >
+            Services
+          </h3>
+          <ul class="space-y-3 text-sm">
+            {
+              navigation.solutions.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="hover:text-white transition-colors duration-150 block"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div>
+          <h3
+            class="text-xs font-bold uppercase tracking-wider text-zinc-200 mb-4"
+          >
+            Company
+          </h3>
+          <ul class="space-y-3 text-sm">
+            {
+              navigation.company.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="hover:text-white transition-colors duration-150 block"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div>
+          <h3
+            class="text-xs font-bold uppercase tracking-wider text-zinc-200 mb-4"
+          >
+            Legal
+          </h3>
+          <ul class="space-y-3 text-sm">
+            {
+              navigation.legal.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="hover:text-white transition-colors duration-150 block"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter Bar -->
+    <div
+      class="py-10 border-b border-zinc-800/60 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+    >
+      <div>
+        <h4 class="text-lg font-bold text-white">
+          Subscribe to our newsletter
+        </h4>
+        <p class="text-sm text-zinc-400">
+          Get the latest updates, articles, and resources sent straight to your
+          inbox.
+        </p>
+      </div>
+
+      <form class="flex w-full md:w-auto gap-2">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          required
+          class="bg-zinc-900 text-white placeholder-zinc-500 border border-zinc-800 px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-500 transition-colors w-full md:w-72"
+        />
+        <button
+          type="submit"
+          class="bg-white text-zinc-950 font-bold px-5 py-2.5 text-sm hover:bg-zinc-200 transition-colors shrink-0"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div
+      class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500"
+    >
+      <p>© {currentYear} BRAND Inc. All rights reserved.</p>
+
+      <div class="flex items-center gap-6">
+        {
+          navigation.socials.map((social) => (
+            <a
+              href={social.href}
+              class="hover:text-white transition-colors text-zinc-400"
+            >
+              {social.name}
+            </a>
+          ))
+        }
+
+        <button
+          id="back-to-top"
+          class="ml-4 p-2 bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+          aria-label="Back to top"
+        >
+          ↑
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("back-to-top")?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
